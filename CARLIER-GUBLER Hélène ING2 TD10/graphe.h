@@ -5,14 +5,18 @@
 #include "arete.h"
 #include <string>
 #include <vector>
+#include <allegro.h>
 
 class Graphe
 {
 public :
     //données
     std::vector<std::vector<int> > MatriceAdjacence;
-    int ordre;
+    int m_ordre;
     std::vector<sommet> Vsommet;
+    BITMAP* buffer;
+    BITMAP* collision;
+    BITMAP* grapheB;
 
     //constructeur
     Graphe();
@@ -20,7 +24,7 @@ public :
     ~Graphe();
 
     void RecuperationFichier();
-    void AffichageInfluence();
+    BITMAP* AffichageInfluence();
 
 };
 
