@@ -55,3 +55,35 @@
 	<fstream>
 	<iostream>
 
+1520177039 source:c:\users\helen\documents\ing2\s2\info\projet info s2\carlier-gubler hélène ing2 td10\arete.cpp
+	"arete.h"
+
+1520176841 c:\users\helen\documents\ing2\s2\info\projet info s2\carlier-gubler hélène ing2 td10\arete.h
+	"sommet.h"
+	<string>
+
+1522752075 c:\users\helen\documents\ing2\s2\info\projet info s2\carlier-gubler hélène ing2 td10\sommet.h
+	<string>
+	<vector>
+	<allegro.h>
+
+1522754160 source:c:\users\helen\documents\ing2\s2\info\projet info s2\carlier-gubler hélène ing2 td10\graphe.cpp
+	"graphe.h"
+	<fstream>
+	<iostream>
+
+1522753316 c:\users\helen\documents\ing2\s2\info\projet info s2\carlier-gubler hélène ing2 td10\graphe.h
+	"sommet.h"
+	"arete.h"
+	<string>
+	<vector>
+	<allegro.h>
+
+1522753732 source:c:\users\helen\documents\ing2\s2\info\projet info s2\carlier-gubler hélène ing2 td10\main.cpp
+	<iostream>
+	<ctime>
+	"graphe.h"
+
+1522752135 source:c:\users\helen\documents\ing2\s2\info\projet info s2\carlier-gubler hélène ing2 td10\sommet.cpp
+	"sommet.h"
+
