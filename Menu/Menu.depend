@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1522849883 source:c:\users\helen\documents\ing2\s2\info\projet info s2\menu\main.cpp
+	<iostream>
+	<allegro.h>
+
