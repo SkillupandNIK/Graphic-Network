@@ -2,7 +2,6 @@
 #include <fstream>
 #include <iostream>
 
-
 Graphe::Graphe()
 {
     m_ordre = 0;
@@ -27,7 +26,7 @@ void Graphe::RecuperationFichier()
     if(!collision)
     {
         std::cout << "Collision est nul !" << std::endl;
-        collision = create_bitmap(SCREEN_W,SCREEN_H);
+ //       collision = create_bitmap(SCREEN_W,SCREEN_H);
         std::cout << "je vais bientot sortir de la boucle ! " << std::endl;
     }
 
@@ -36,17 +35,49 @@ void Graphe::RecuperationFichier()
         grapheB = create_bitmap(SCREEN_W,SCREEN_H);
     std::cout << "coucou je suis la 3" << std::endl;
     std::cout << "coucou1.3" << std::endl;
-    if (!buffer || !collision || !grapheB)
+  /*  if (!buffer || !collision || !grapheB)
     {
         set_gfx_mode(GFX_TEXT, 0, 0, 0, 0);
         allegro_message("Erreur ! Impossible de lire les fichiers !");
-    }
+    }*/
     std::cout << "coucou1.4" << std::endl;
     std::ifstream Admin("Chaine1.txt", std::ios::in);
     std::cout << "coucou1.5" << std::endl;
-    if(Admin == NULL)
-        std::cout << "ERREUR: Impossible d'ouvrir le fichier en lecture." << std::endl;
+    // if(Admin == NULL) std::cout << "ERREUR: Impossible d'ouvrir le fichier en lecture." << std::endl;
 
+        int nb_sommet;
+        int num_sommet;
+        std::string nom_sommet;
+        int posx;
+        int posy;
+        int i=0;
+
+    if(Admin)  // si l'ouverture a fonctionnÈ
+    {
+        std::cout << "coucouVrd1" << std::endl ;
+            sommet a;     /// fait planter
+std::cout << "coucouVrd2" << std::endl ;
+            Admin >> nb_sommet;
+            m_ordre = nb_sommet;
+            while(i<=m_ordre){
+
+                    std::cout << nb_sommet;
+                    while(i<nb_sommet){
+                    Admin >>  num_sommet >> nom_sommet >> posx >> posy ;
+                    std::cout << std::endl << num_sommet << std::endl << nom_sommet << std::endl << posx << std::endl << posy << std::endl ;
+                    i++;
+
+                    a = sommet (nom_sommet,num_sommet, {posx, posy});
+                    Vsommet.push_back(a);
+            }
+            std::cout << "coucouVrd2" << std::endl ;
+          //  for(i = myvector.begin(); i != myvector.end(); i++ )    {
+
+         //       std::cout << Vsommet(elem);
+         for(const auto& elem :Vsommet) std::cout << elem.nom;
+
+        }
+        Admin.close();
     std::cout << "coucou1.5" << std::endl;
     Admin >> m_ordre;
     std::vector < std::vector < int > > mat (m_ordre);
@@ -62,7 +93,7 @@ void Graphe::RecuperationFichier()
         }
     }
     std::cout << "coucou1.7" << std::endl;
-    for(int k = 0; k<m_ordre; k++)
+  /*  for(int k = 0; k<m_ordre; k++)
     {
         sommet a;
         Admin >> numero;
@@ -72,7 +103,7 @@ void Graphe::RecuperationFichier()
         a = sommet(f_nom, numero, {x,y});
         Vsommet.push_back(a);
     }
-    std::cout << "coucou1.8" << std::endl;
+    std::cout << "coucou1.8" << std::endl; */
 }
 
 BITMAP* Graphe::AffichageInfluence()

@@ -16,7 +16,8 @@ class sommet
 
  public:
     //constructeur
-    sommet(std::string nom = "", int numero = 0, std::vector<int> coordonnee = {0,0});
+    sommet();
+    sommet(std::string nom, int numero, std::vector<int> coordonnee);
     //destructeur
     ~sommet();
 

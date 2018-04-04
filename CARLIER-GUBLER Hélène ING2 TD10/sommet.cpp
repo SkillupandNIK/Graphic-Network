@@ -1,10 +1,19 @@
 #include "sommet.h"
+#include <fstream>
+#include <iostream>
+#include <limits>
+using namespace std;
+
+sommet::sommet()
+{
+}
 
 sommet::sommet(std::string nom , int numero, std::vector<int> coordonnee)
 {
     m_nom = nom;
     m_numero = numero;
     m_coordonnee = coordonnee;
+
     std::string nomImage = nom + ".bmp";
 
     m_image = load_bitmap(nomImage.c_str() ,NULL);

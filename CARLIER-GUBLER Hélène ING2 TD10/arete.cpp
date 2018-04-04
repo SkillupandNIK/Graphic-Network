@@ -1,5 +1,5 @@
 #include "arete.h"
-
+/*
 arete::arete(std::string nom)
 {
     m_nom = nom;
@@ -12,4 +12,4 @@ arete::~arete()
 {
     delete[]Extremites;
 }
-
+*/
