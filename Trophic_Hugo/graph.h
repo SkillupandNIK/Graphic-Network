@@ -161,6 +161,8 @@ class Vertex
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
+
+        void supprimer_vertex(bool parametre = false);
 };
 
 
@@ -235,6 +237,8 @@ class Edge
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
+
+        void supprimer_edge(bool parametre = false);
 };
 
 
@@ -308,6 +312,11 @@ class Graph
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();
+
+        void test_remove_edge(int eidx);
+        void test_remove_vertex(int vidx);
+
+        void supprimer_graphe();
 };
 
 

@@ -20,6 +20,9 @@ int main()
     /// ( contrairement à des frameworks plus avancés )
     while ( !key[KEY_ESC] )
     {
+        if (key[KEY_SPACE])
+            g.test_remove_vertex(1);
+
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
         g.update();
 
