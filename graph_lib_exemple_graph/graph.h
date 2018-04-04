@@ -304,6 +304,8 @@ class Graph
         /// Cette méthode est à enlever et remplacer par un système
         /// de chargement de fichiers par exemple.
         void make_example(std::string nom_fichier);
+        void test_remove_vertex(int vidx);
+        void test_remove_edge(int eidx);
 
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface

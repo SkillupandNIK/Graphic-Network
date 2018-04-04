@@ -7,7 +7,7 @@ int main()
 {
     int plusAvant = 0;
     int taille_screen_x = 1024;
-    int taille_screen_y = 738;
+    int taille_screen_y = 728;
     /// A appeler en 1er avant d'instancier des objets graphiques etc...
     grman::init();
 
@@ -17,10 +17,11 @@ int main()
     BITMAP* Poubelle;
     BITMAP* Menu;
     /// Un exemple de graphe
-    Graph g;
+
 
     Poubelle = load_bitmap("poubelle.bmp", NULL);
     Menu = create_bitmap(taille_screen_x,taille_screen_y);
+    clear_to_color(screen, makecol(255,255,0));
     clear_to_color(Menu, makecol(255,255,0));
     if(Poubelle != NULL)
     {
@@ -28,6 +29,7 @@ int main()
     }
     while(draw_bouton_texte(Menu,taille_screen_x/2, taille_screen_y-40, taille_screen_x/2+40, taille_screen_y-20, makecol(255,255,255),makecol(255,0,0),3, "Quitter") != 1)
     {
+        Graph g;
         if(draw_bouton_image(Menu,10,taille_screen_y-90,80+10,taille_screen_y-10,makecol(255,255,255),makecol(255,0,0),3,"plus.bmp") == 1)
         {
             std::cout << "On rajoute un graphe";
@@ -48,6 +50,8 @@ void GestionGraphe(Graph& g)
     g.make_example("Ferme.txt");
     while ( !key[KEY_ESC] )
     {
+        if (key[KEY_SPACE])
+            g.test_remove_vertex(1);
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
         g.update();
 
