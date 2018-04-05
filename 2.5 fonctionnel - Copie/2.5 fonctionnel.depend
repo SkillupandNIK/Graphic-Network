@@ -1,0 +1,111 @@
+# depslib dependency file v1.0
+1522943683 source:c:\users\hugoa\desktop\2.0 fonctionnel\graphic-network-hugo\trophic_hugo\graph.cpp
+	"graph.h"
+
+1522943685 c:\users\hugoa\desktop\2.0 fonctionnel\graphic-network-hugo\trophic_hugo\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522827482 c:\users\hugoa\desktop\2.0 fonctionnel\graphic-network-hugo\trophic_hugo\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522827482 c:\users\hugoa\desktop\2.0 fonctionnel\graphic-network-hugo\trophic_hugo\grman\grman_couleurs.h
+
+1522827482 c:\users\hugoa\desktop\2.0 fonctionnel\graphic-network-hugo\trophic_hugo\grman\coords.h
+	<cmath>
+
+1522827482 c:\users\hugoa\desktop\2.0 fonctionnel\graphic-network-hugo\trophic_hugo\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522827482 source:c:\users\hugoa\desktop\2.0 fonctionnel\graphic-network-hugo\trophic_hugo\grman\coords.cpp
+	"coords.h"
+
+1522827482 source:c:\users\hugoa\desktop\2.0 fonctionnel\graphic-network-hugo\trophic_hugo\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522827482 source:c:\users\hugoa\desktop\2.0 fonctionnel\graphic-network-hugo\trophic_hugo\grman\widget.cpp
+	"widget.h"
+
+1522827482 source:c:\users\hugoa\desktop\2.0 fonctionnel\graphic-network-hugo\trophic_hugo\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1522943683 source:c:\users\hugoa\desktop\2.5 fonctionnel - copie\graph.cpp
+	"graph.h"
+
+1522943685 c:\users\hugoa\desktop\2.5 fonctionnel - copie\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522827482 c:\users\hugoa\desktop\2.5 fonctionnel - copie\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522827482 c:\users\hugoa\desktop\2.5 fonctionnel - copie\grman\grman_couleurs.h
+
+1522827482 c:\users\hugoa\desktop\2.5 fonctionnel - copie\grman\coords.h
+	<cmath>
+
+1522827482 c:\users\hugoa\desktop\2.5 fonctionnel - copie\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522827482 source:c:\users\hugoa\desktop\2.5 fonctionnel - copie\grman\coords.cpp
+	"coords.h"
+
+1522827482 source:c:\users\hugoa\desktop\2.5 fonctionnel - copie\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522827482 source:c:\users\hugoa\desktop\2.5 fonctionnel - copie\grman\widget.cpp
+	"widget.h"
+
+1522827482 source:c:\users\hugoa\desktop\2.5 fonctionnel - copie\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
