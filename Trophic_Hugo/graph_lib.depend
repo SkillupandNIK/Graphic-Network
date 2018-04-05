@@ -1,0 +1,222 @@
+# depslib dependency file v1.0
+1522775527 source:c:\users\hugoa\desktop\trophic network\ressources\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+
+1522772206 c:\users\hugoa\desktop\trophic network\ressources\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522539041 c:\users\hugoa\desktop\trophic network\ressources\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1509222372 c:\users\hugoa\desktop\trophic network\ressources\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1522575424 c:\users\hugoa\desktop\trophic network\ressources\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1522636616 c:\users\hugoa\desktop\trophic network\ressources\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522575069 source:c:\users\hugoa\desktop\trophic network\ressources\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1522515823 source:c:\users\hugoa\desktop\trophic network\ressources\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522636919 source:c:\users\hugoa\desktop\trophic network\ressources\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1522657075 source:c:\users\hugoa\desktop\trophic network\ressources\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1522575069 source:c:\users\hugoa\desktop\trophic network\trophic_hugo\grman\coords.cpp
+	"coords.h"
+
+1522575424 c:\users\hugoa\desktop\trophic network\trophic_hugo\grman\coords.h
+	<cmath>
+
+1522515823 source:c:\users\hugoa\desktop\trophic network\trophic_hugo\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522539041 c:\users\hugoa\desktop\trophic network\trophic_hugo\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1509222372 c:\users\hugoa\desktop\trophic network\trophic_hugo\grman\grman_couleurs.h
+
+1522636616 c:\users\hugoa\desktop\trophic network\trophic_hugo\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522636919 source:c:\users\hugoa\desktop\trophic network\trophic_hugo\grman\widget.cpp
+	"widget.h"
+
+1522858910 source:c:\users\hugoa\desktop\trophic network\trophic_hugo\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1522856907 c:\users\hugoa\desktop\trophic network\trophic_hugo\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522858935 source:c:\users\hugoa\desktop\trophic network\trophic_hugo\graph.cpp
+	"graph.h"
+
+1522827482 source:c:\users\hugoa\desktop\graphic-network-hugo\trophic_hugo\grman\coords.cpp
+	"coords.h"
+
+1522827482 c:\users\hugoa\desktop\graphic-network-hugo\trophic_hugo\grman\coords.h
+	<cmath>
+
+1522827482 source:c:\users\hugoa\desktop\graphic-network-hugo\trophic_hugo\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522827482 c:\users\hugoa\desktop\graphic-network-hugo\trophic_hugo\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522827482 c:\users\hugoa\desktop\graphic-network-hugo\trophic_hugo\grman\grman_couleurs.h
+
+1522827482 c:\users\hugoa\desktop\graphic-network-hugo\trophic_hugo\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522827482 source:c:\users\hugoa\desktop\graphic-network-hugo\trophic_hugo\grman\widget.cpp
+	"widget.h"
+
+1522827482 source:c:\users\hugoa\desktop\graphic-network-hugo\trophic_hugo\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1522931941 c:\users\hugoa\desktop\graphic-network-hugo\trophic_hugo\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522932620 source:c:\users\hugoa\desktop\graphic-network-hugo\trophic_hugo\graph.cpp
+	"graph.h"
+
+1522935172 source:c:\users\helen\documents\ing2\s2\info\projet info s2\trophic_hugo\graph.cpp
+	"graph.h"
+	<fstream>
+
+1522935172 c:\users\helen\documents\ing2\s2\info\projet info s2\trophic_hugo\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522827482 c:\users\helen\documents\ing2\s2\info\projet info s2\trophic_hugo\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522827482 c:\users\helen\documents\ing2\s2\info\projet info s2\trophic_hugo\grman\grman_couleurs.h
+
+1522827482 c:\users\helen\documents\ing2\s2\info\projet info s2\trophic_hugo\grman\coords.h
+	<cmath>
+
+1522827482 c:\users\helen\documents\ing2\s2\info\projet info s2\trophic_hugo\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522827482 source:c:\users\helen\documents\ing2\s2\info\projet info s2\trophic_hugo\grman\coords.cpp
+	"coords.h"
+
+1522827482 source:c:\users\helen\documents\ing2\s2\info\projet info s2\trophic_hugo\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522827482 source:c:\users\helen\documents\ing2\s2\info\projet info s2\trophic_hugo\grman\widget.cpp
+	"widget.h"
+
+1522827482 source:c:\users\helen\documents\ing2\s2\info\projet info s2\trophic_hugo\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
