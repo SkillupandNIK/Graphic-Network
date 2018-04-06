@@ -284,6 +284,9 @@ void Graph::add_interfaced_vertex(int idx, double value, int x, int y, std::stri
     m_interface->m_main_box.add_child(vi->m_top_box);
     // On peut ajouter directement des vertices dans la map avec la notation crochet :
     m_vertices[idx] = Vertex(value, vi);
+    m_vertices[idx].m_N = value;
+    m_vertices[idx].m_x = x;
+    m_vertices[idx].m_y = y;
 }
 
 /// Aide à l'ajout d'arcs interfacés
@@ -414,7 +417,7 @@ void Graph::test_remove_vertex(int vidx)
 //inspiré du livret de polycopié du cours de théorie des graphes 2017-2018
 std::vector<bool> Graph::uneComposanteFortementConnexe(int s)
 {
-    std::cout << "On rentre dans 'Une composante Fortement Connexe'" << std::endl;
+    //std::cout << "On rentre dans 'Une composante Fortement Connexe'" << std::endl;
 
     ///variables locales
     std::vector<bool> compo1, compo2; //composantes connexes directes partant de s et indirectes arrivant à s
@@ -433,7 +436,7 @@ std::vector<bool> Graph::uneComposanteFortementConnexe(int s)
         marques1.push_back(false);
         marques2.push_back(false);
     }
-    std::cout << "Compo s = " << s << std::endl;
+    //std::cout << "Compo s = " << s << std::endl;
 
     ///On rend le sommet connexe
     compo1[s] = true;
@@ -473,19 +476,19 @@ std::vector<bool> Graph::uneComposanteFortementConnexe(int s)
 //    }
 //    compo2[s] = true;
 
-    std::cout << "compo 2 : " ;
-    for(int i = 0; i < m_ordre; i++)
-        std::cout << compo2[i] << " ";
-    std::cout << std::endl;
-
-    std::cout << "on commence la boucle pour compo 2" << std::endl;
-    int m = 0;
+//    std::cout << "compo 2 : " ;
+//    for(int i = 0; i < m_ordre; i++)
+//        std::cout << compo2[i] << " ";
+//    std::cout << std::endl;
+//
+//    std::cout << "on commence la boucle pour compo 2" << std::endl;
+    //int m = 0;
 
 
     ///COMPO2
     while(ajoute2 == true)
     {
-        std::cout << "On entre dans la boucle while" << std::endl << std::endl;
+        //std::cout << "On entre dans la boucle while" << std::endl << std::endl;
         ajoute2 = false;
 
         for(x= 0; x<m_ordre; x++)
@@ -515,7 +518,7 @@ std::vector<bool> Graph::uneComposanteFortementConnexe(int s)
 //                            std::cout << compo2[x] << " " ;
 //                        }
 //                        std::cout << std::endl;
-                        m++;
+                       // m++;
                     }
 
                 }
@@ -532,11 +535,11 @@ std::vector<bool> Graph::uneComposanteFortementConnexe(int s)
 //        std::cout<<"compo2[i]="<<compo2[i]<<" ";
 //
 //
-    std::cout<<"Voici une compo fortement connexe du graphe:"<<std::endl;
+    //std::cout<<"Voici une compo fortement connexe du graphe:"<<std::endl;
     for(int i=0; i<m_ordre; i++)
     {
         compo[i]=compo1[i] & compo2[i];
-        std::cout<<"sommet"<<i<<"="<<compo[i]<<std::endl;
+        //std::cout<<"sommet"<<i<<"="<<compo[i]<<std::endl;
 
     }
 
@@ -601,11 +604,12 @@ std::vector<std::vector<bool> > Graph::toutesLesComposantesFortementConnexes()
 void Graph::ColoriageCompoConnexe()
 {
     std::vector<std::vector<bool> > CompoConnexe = toutesLesComposantesFortementConnexes();
+    ///On met les arcs de couleur en fonction des composantes fortement connexes
     for(int x = 0; x < m_ordre; x++)
     {
         for(int y = 0; y< m_ordre; y++)
         {
-            int couleur = COULEURALEATOIRE;
+            int couleur = COULEURALEATOIRECLAIR;
 
             for(const auto& elem : m_edges)
             {
@@ -614,5 +618,158 @@ void Graph::ColoriageCompoConnexe()
             }
         }
     }
+
+    ///On créer une boite de texte qui va afficher le nombre de composantes fortement connexe à l'écran
+    m_interface->m_top_box.add_child(m_interface->m_compoConnexe_text);
+    //m_interface->m_compoConnexe_box(m_interface->m_tool_box);
+
+    bool idem;
+    std::string Connexe = " ";
+    std::vector <std::vector<bool> > tmp;
+
+    tmp.push_back(CompoConnexe[0]);
+
+    ///On compte le nombre de composantes fortements connexes
+    for(int i = 1; i < m_ordre; i++)
+    {
+        idem = false;
+        for(unsigned int j = 0; j< tmp.size(); j++)
+        {
+            if(CompoConnexe[i] == tmp[j])
+                idem = true;
+        }
+        if(idem == false)
+            tmp.push_back(CompoConnexe[i]);
+    }
+    //std::cout << "Il y a " << tmp.size() << " composante(s) connexe(s) : " << std::endl;
+
+    ///Affichages des sommets des composantes connexes
+    for(unsigned int i = 0; i < tmp.size(); i++)
+    {
+        for(unsigned int j = 0; j< tmp[i].size(); j++)
+        {
+            if(tmp[i][j] != 0)
+            {
+                //std::cout << j << " " ;
+                Connexe = Connexe + std::to_string(j) + " ";
+            }
+
+        }
+        Connexe = Connexe + ",";
+        //std::cout << std::endl;
+    }
+
+    Connexe = "Il y a " + std::to_string(tmp.size()) + " composante(s) fortement connexe(s) : " + Connexe;
+    //std::cout << Connexe;
+    m_interface->m_compoConnexe_text.set_message(Connexe);
+    m_interface->m_compoConnexe_text.set_pos(300,700);
+}
+
+
+void Graph::AffichageGraphReduit(int compteur)
+{
+    std::vector<std::vector<bool> > CompoConnexe = toutesLesComposantesFortementConnexes();
+    bool idem;
+    std::vector <std::vector<bool> > tmp;
+    Graph GrapheReduit;
+    int x = 0,y = 0,N = 0, division = 0;
+    int ii = 0;
+
+
+    GrapheReduit.m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600);
+    tmp.push_back(CompoConnexe[0]);
+
+    ///On compte le nombre de composantes fortements connexes
+    for(int i = 1; i < m_ordre; i++)
+    {
+        idem = false;
+        for(unsigned int j = 0; j< tmp.size(); j++)
+        {
+            if(CompoConnexe[i] == tmp[j])
+                idem = true;
+        }
+        if(idem == false)
+            tmp.push_back(CompoConnexe[i]);
+    }
+
+    //for(int i = 0 ; i<tmp.)
+
+
+    ///AFFICHAGE DES SOMMETS
+    for(int i = 0 ; i<tmp.size(); i++)
+    {
+        division = 0;
+        N = 0;
+        x = 0;
+        y = 0;
+        for(int j = 0; j< tmp[i].size(); j++)
+        {
+
+            if(tmp[i][j] == true)
+            {
+                N = N+ m_vertices[j].m_N;
+                x = x+m_vertices[j].m_x;
+                y = y + m_vertices[j].m_y;
+                division++;
+            }
+        }
+        x = x / division;
+        y = y / division;
+        GrapheReduit.add_interfaced_vertex(i, N, x, y, "Renard.bmp");
+        ii++;
+    }
+
+    ///AFFICHAGE DES ARCS
+    std::vector<std::vector<int> > areteReduitEntrant;
+    std::vector < std::vector < int > > mat (ii);
+    areteReduitEntrant = mat;
+    bool existance = false;
+
+    for(int x = 0; x < tmp.size(); x++)
+    {
+        for(int y = 0; y< tmp[x].size() ; y++)
+        {
+            if(tmp[x][y] == true) //on entre dans une composante connexe (la xième) et on trouve un sommet connexe (le jième)
+            {
+                for(int w = 0; w < m_vertices[y].m_in.size(); w++)
+                {
+                    existance = false;
+                    std::cout << " areteReduitEntrant[x].size() = " << areteReduitEntrant[x].size() << std::endl;
+                    for(int z= 0; z<areteReduitEntrant[x].size();z++)
+                    {
+                        std::cout << " m_edges[m_vertices[y].m_in[w]].m_from  = " << m_edges[m_vertices[y].m_in[w]].m_from  << std::endl;
+                        std::cout << "areteReduitEntrant[x][z] = " << areteReduitEntrant[x][z] << std::endl;
+                        if(m_edges[m_vertices[y].m_in[w]].m_from != areteReduitEntrant[x][z])
+                        {
+                            std::cout << "JE SUIS LA " << std::endl;
+                            areteReduitEntrant[x].push_back(m_edges[m_vertices[y].m_in[w]].m_from);
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    std::cout << "ARETE REDUIT ENTRANT : " << std::endl;
+    for(int i = 0; i<areteReduitEntrant.size(); i++)
+    {
+        for(int j = 0; j < areteReduitEntrant[i].size(); j++)
+        {
+            std::cout << areteReduitEntrant[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+
+
+    if(compteur < 400)
+    {
+        std::cout << "compteur = " << compteur << std::endl;
+        GrapheReduit.update();
+        grman::mettre_a_jour();
+    }
+
+        //blit(GrapheReduit, screen, 0 ,0, 224 , 128, 800, 600);
 
 }

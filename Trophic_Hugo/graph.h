@@ -155,6 +155,10 @@ class Vertex
 
     public:
 
+        int m_N;
+        int m_x;
+        int m_y;
+
         /// Les constructeurs sont à compléter selon vos besoin...
         /// Ici on ne donne qu'un seul constructeur qui peut utiliser une interface
         Vertex (double value=0, VertexInterface *interface=nullptr) :
@@ -268,6 +272,9 @@ class GraphInterface
         /// Dans cette boite seront ajoutés les (interfaces des) sommets et des arcs...
         grman::WidgetBox m_main_box;
 
+        /// Dans cette boite seront ajoutés le nombre de composantes connexes
+        grman::WidgetText m_compoConnexe_text;
+
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
@@ -328,6 +335,7 @@ class Graph
         ///Etude de la connexité
         std::vector<std::vector<bool> > toutesLesComposantesFortementConnexes();
         void ColoriageCompoConnexe();
+        void AffichageGraphReduit(int compteur);
 
         void supprimer_graphe();
 };

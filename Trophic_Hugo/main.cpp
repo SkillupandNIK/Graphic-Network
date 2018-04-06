@@ -5,7 +5,6 @@
 
 int main()
 {
-    int plusAvant = 0;
     int taille_screen_x = 1024;
     int taille_screen_y = 728;
     /// A appeler en 1er avant d'instancier des objets graphiques etc...
@@ -21,7 +20,7 @@ int main()
 
     Poubelle = load_bitmap("poubelle.bmp", NULL);
     Menu = create_bitmap(taille_screen_x,taille_screen_y);
-    clear_to_color(screen, makecol(255,255,0));
+    //clear_to_color(screen, makecol(255,255,0));
     clear_to_color(Menu, makecol(255,255,0));
     if(Poubelle != NULL)
     {
@@ -48,24 +47,25 @@ END_OF_MAIN();
 void GestionGraphe(Graph& g)
 {
     g.make_example("Ferme.txt");
-
+    int compteur = 0;
     std::vector<std::vector<bool> >  CompoConnexe = g.toutesLesComposantesFortementConnexes();
-    for(int i = 0; i< g.m_ordre; i++)
-    {
-        for(int j = 0; j < g.m_ordre; j++)
-            std::cout << CompoConnexe[i][j] << " " ;
-        std::cout << std::endl;
-    }
     g.ColoriageCompoConnexe();
+    while(compteur < 500)
+    {
+        g.AffichageGraphReduit(compteur);
+        compteur++;
+    }
 
     while ( !key[KEY_ESC] )
     {
+
         if (key[KEY_SPACE])
             g.test_remove_vertex(1);
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
         g.update();
         /// Mise à jour générale (clavier/souris/buffer etc...)
         grman::mettre_a_jour();
+        compteur++;
     }
 }
 
