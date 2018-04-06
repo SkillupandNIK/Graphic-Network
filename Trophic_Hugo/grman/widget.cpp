@@ -154,6 +154,8 @@ void Widget::draw_border()
     rect_around(m_view_wb, get_border_color(), m_border);
 }
 
+
+
 /***************************************************
                         TEXT
 ****************************************************/

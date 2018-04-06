@@ -115,7 +115,8 @@ class VertexInterface
         grman::WidgetText m_box_label_idx;
 
         grman::WidgetButton m_supp;
-        grman::WidgetImage m_supp_image;
+        grman::WidgetImage m_image;
+
 
     public :
 
@@ -295,8 +296,13 @@ class Graph
         std::shared_ptr<GraphInterface> m_interface = nullptr;
 
 
-    public:
 
+        ///ETUDE DE LA CONNEXITE
+        std::vector<bool> uneComposanteFortementConnexe(int s);
+
+
+    public:
+        int m_ordre;
         /// Les constructeurs sont à compléter selon vos besoin...
         /// Ici on ne donne qu'un seul constructeur qui peut utiliser une interface
         Graph (GraphInterface *interface=nullptr) :
@@ -317,6 +323,11 @@ class Graph
 
         void test_remove_edge(int eidx);
         void test_remove_vertex(int vidx);
+
+
+        ///Etude de la connexité
+        std::vector<std::vector<bool> > toutesLesComposantesFortementConnexes();
+        void ColoriageCompoConnexe();
 
         void supprimer_graphe();
 };

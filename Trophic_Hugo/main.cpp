@@ -48,23 +48,25 @@ END_OF_MAIN();
 void GestionGraphe(Graph& g)
 {
     g.make_example("Ferme.txt");
-//    std::vector<std::vector<bool> >  CompoConnexe = g.toutesLesComposantesFortementConnexes();
-    std::cout << "HELENE 1" << std::endl;
+
+    std::vector<std::vector<bool> >  CompoConnexe = g.toutesLesComposantesFortementConnexes();
+    for(int i = 0; i< g.m_ordre; i++)
+    {
+        for(int j = 0; j < g.m_ordre; j++)
+            std::cout << CompoConnexe[i][j] << " " ;
+        std::cout << std::endl;
+    }
+    g.ColoriageCompoConnexe();
+
     while ( !key[KEY_ESC] )
     {
-        std::cout << "HELENE 2" << std::endl;
         if (key[KEY_SPACE])
             g.test_remove_vertex(1);
-        std::cout << "HELENE 3" << std::endl;
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
         g.update();
-        std::cout << "HELENE 4" << std::endl;
-
         /// Mise à jour générale (clavier/souris/buffer etc...)
         grman::mettre_a_jour();
-        std::cout << "HELENE 5" << std::endl;
-}
-
+    }
 }
 
 /*

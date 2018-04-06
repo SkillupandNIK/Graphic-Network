@@ -24,13 +24,12 @@ VertexInterface::VertexInterface(int idx, int x, int y, std::string pic_name, in
     m_top_box.add_child( m_label_value );
     m_label_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Down);
 
-
     m_top_box.add_child(m_supp);
     m_supp.set_dim(10, 10);
     m_supp.set_bg_color(BLANC);
-    m_supp.add_child(m_img);
     m_supp.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
-    m_img.set_pic_name("croix10.bmp");
+    m_supp.add_child(m_image);
+    m_image.set_pic_name("croix10.bmp");
 
     // Une illustration...
     if (pic_name!="")
@@ -191,6 +190,7 @@ void Graph::make_example(std::string nom_fichier)
     int numero, N, x, y;
     std::string nom_Image;
     Admin >> ordre;
+    m_ordre = ordre;
 
     for(int i = 0 ; i < ordre; i++)
     {
@@ -207,14 +207,11 @@ void Graph::make_example(std::string nom_fichier)
     Admin >> nbEdge;
     for(int i = 0; i<nbEdge; i++)
     {
-        std::cout << "i = " << i << std::endl;
-        std::cout << " COUCOU JE M'APPELLE HUGO 1" << std::endl;
         Admin >> numeroEdge;
         Admin >> S1;
         Admin >> S2;
         Admin >> poids;
         add_interfaced_edge(numeroEdge, S1, S2, poids);
-        std::cout << " COUCOU JE M'APPELLE HUGO 2" << std::endl;
     }
 
 
@@ -411,4 +408,211 @@ void Graph::test_remove_vertex(int vidx)
         m_interface->m_main_box.remove_child (remver.m_interface->m_top_box);
 
     //m_vertices.erase(vidx);
+}
+
+
+//inspiré du livret de polycopié du cours de théorie des graphes 2017-2018
+std::vector<bool> Graph::uneComposanteFortementConnexe(int s)
+{
+    std::cout << "On rentre dans 'Une composante Fortement Connexe'" << std::endl;
+
+    ///variables locales
+    std::vector<bool> compo1, compo2; //composantes connexes directes partant de s et indirectes arrivant à s
+    std::vector<bool> compo; // composantes fortement connexes : compo1 inter compo2 à retourner
+    std::vector<bool> marques1, marques2;// tableau de marquage
+    int x; //numero de sommets intermédiaires des composantes connexes
+    bool ajoute1 = true,ajoute2 = true; ; //booléen indiquant si une nouvelle composante connexe est ajouté
+
+
+    ///On alloue et initialise les tableau compo1, compo2, compo et marques
+    for(int i = 0; i< m_ordre; i++ )
+    {
+        compo1.push_back(false);
+        compo2.push_back(false);
+        compo.push_back(false);
+        marques1.push_back(false);
+        marques2.push_back(false);
+    }
+    std::cout << "Compo s = " << s << std::endl;
+
+    ///On rend le sommet connexe
+    compo1[s] = true;
+    compo2[s] = true;
+
+    ///Recherche des composantes connexes partant de s à ajouter dans compo1
+
+    ///COMPO1
+    while(ajoute1==true)
+    {
+        ajoute1 = false; //à chaque tour, recherche d'une nouvelle composante connexe à ajouter
+        ///Pour tous les sommets x non marqués et connectés en partant de s
+        ///Marquer chaque sommet x et connecter les sommets non marqués y adjacents à x
+        for(x=0; x< m_ordre; x++)
+        {
+            if(marques1[x]==false && compo1[x]==true)
+            {
+                marques1[x] = 1;
+                //int k = 0;
+                for(const auto& elem: m_edges)
+                {
+
+                    if(elem.second.m_from == x && marques1[elem.second.m_to] == false)
+                    {
+                        compo1[elem.second.m_to] = true;
+                        ajoute1 = true; //nouvelle composante connexe ajoutée
+                    }
+                //k++;
+                }
+            }
+        }
+    }
+//    for(int i =0 ; i< m_ordre; i++)
+//    {
+//        marques[x] = false;
+//        compo2.push_back(false);
+//    }
+//    compo2[s] = true;
+
+    std::cout << "compo 2 : " ;
+    for(int i = 0; i < m_ordre; i++)
+        std::cout << compo2[i] << " ";
+    std::cout << std::endl;
+
+    std::cout << "on commence la boucle pour compo 2" << std::endl;
+    int m = 0;
+
+
+    ///COMPO2
+    while(ajoute2 == true)
+    {
+        std::cout << "On entre dans la boucle while" << std::endl << std::endl;
+        ajoute2 = false;
+
+        for(x= 0; x<m_ordre; x++)
+        {
+        ///On recherche des composantes connexes arrivant à s à ajouter dans compo2
+            if(marques2[x]==false && compo2[x]==true)
+            {
+                //std::cout << "On rentre dans if(marques[x]==false && compo2[x]) " << std::endl;
+                marques2[x] = true;
+                //std::cout << "On met marques[x] à true : marques2["<< x<<"] = " << marques2[x] << std::endl;
+                    for(const auto& elem : m_edges)
+                    {   //std::cout << "CONST AUTO ELEM NOUVEAU NUMERO" << std::endl;
+                        //std::cout << "m = " << m <<std::endl;
+                        //std::cout << " Sommet 1 = " << elem.second.m_from << std::endl;
+                        //std::cout << " Sommet 2 = " << elem.second.m_to << std::endl;
+                        if(elem.second.m_to == x && marques2[elem.second.m_from] == false)
+                        {
+                            //std::cout << "On rentre dans le if(elem.second.m_to == x && marques[elem.second.m_from] == false) " << std::endl;
+    //                        std::cout << " Sommet 1 = " << elem.second.m_from << std::endl;
+    //                        std::cout << " Sommet 2 = " << elem.second.m_to << std::endl;
+                            compo2[elem.second.m_from] = true;
+                            ajoute2 = true;
+                        }
+                        //std::cout << "COMPO 2 : ";
+//                        for(int l = 0; l < m_ordre; l++)
+//                        {
+//                            std::cout << compo2[x] << " " ;
+//                        }
+//                        std::cout << std::endl;
+                        m++;
+                    }
+
+                }
+            }
+        }
+
+//    std::cout << "On sort des boucles whiles" << std::endl;
+//
+//    for(int i=0; i<m_ordre; i++)
+//        std::cout<<"compo1[i]="<<compo1[i]<<" ";
+//
+//    std::cout<<std::endl;
+//    for(int i=0; i<m_ordre; i++)
+//        std::cout<<"compo2[i]="<<compo2[i]<<" ";
+//
+//
+    std::cout<<"Voici une compo fortement connexe du graphe:"<<std::endl;
+    for(int i=0; i<m_ordre; i++)
+    {
+        compo[i]=compo1[i] & compo2[i];
+        std::cout<<"sommet"<<i<<"="<<compo[i]<<std::endl;
+
+    }
+
+//    ///Composante fortement connexe compo = intersection de compo1 et compo2
+//    std::cout << "Compo : ";
+//    for(x= 0; x<m_ordre; x++)
+//    {
+//        compo[x] = compo1[x] & compo2[x];
+//        std::cout << compo[x] << " ";
+//    }
+//    std::cout << std::endl;
+
+    //std::cout << "On sort de 'Une composante Fortement Connexe'" << std::endl;
+    ///On retourne la composante fortement connexe compo
+    return compo;
+}
+
+std::vector<std::vector<bool> > Graph::toutesLesComposantesFortementConnexes()
+{
+    ///Variables locales
+    //std::cout << "Graph 1 " << std::endl;
+    std::vector<std::vector<bool> >  tabc (m_ordre); //tableau des composantes fortement connexe à retourner
+    std::vector<bool> marques; //tableau qui indique si un sommet est marqué ou pas
+    //std::cout << "Graph 2 " << std::endl;
+    ///Allocation et initialisation des tableaux
+    for(int i = 0; i < m_ordre; i++)
+    {
+        marques.push_back(false);
+        for(int j = 0; j < m_ordre; j++)
+            tabc[i].push_back(false);
+
+    }
+    //std::cout << "Graph 3 " << std::endl;
+
+    ///Pour tous les sommmets non marqués
+    ///Recherche de la composante fortement connexe de x
+    ///Marquer chaque sommet x et marquer les sommets y connectés à x et non marqués
+    for(int x =0; x< m_ordre; x++)
+    {
+        if(marques[x] == false)
+        {
+            //std::cout << "Graph 3.1 " << std::endl;
+            //std::cout << "TOUTE CONNEXE X =  " << x << std::endl;
+            std::vector<bool> LacompoConnexe = uneComposanteFortementConnexe(x);
+            tabc[x] = LacompoConnexe;
+            //std::cout << "Graph 3.2 " << std::endl;
+            marques[x] = true;
+            for(int y ; y<m_ordre; y++)
+            {
+                tabc[x][y] = LacompoConnexe[y];
+                if(tabc[x][y]!=0 && marques[y]==false)
+                    marques[y] = true;
+            }
+        }
+    }
+    //std::cout << "Graph 4 " << std::endl;
+
+    return tabc;
+}
+
+
+void Graph::ColoriageCompoConnexe()
+{
+    std::vector<std::vector<bool> > CompoConnexe = toutesLesComposantesFortementConnexes();
+    for(int x = 0; x < m_ordre; x++)
+    {
+        for(int y = 0; y< m_ordre; y++)
+        {
+            int couleur = COULEURALEATOIRE;
+
+            for(const auto& elem : m_edges)
+            {
+                if(CompoConnexe[x][elem.second.m_from] == true && CompoConnexe[x][elem.second.m_to]==true)
+                    m_edges.at(elem.first).m_interface->m_top_edge.set_color_fleche(couleur);
+            }
+        }
+    }
+
 }

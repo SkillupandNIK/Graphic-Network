@@ -73,6 +73,8 @@ class Widget
     /// et les classes qui ont un Widget ou dérivé en attribut
     public :
 
+
+
         /// Construction/Destruction
         Widget(double x, double y, double w, double h) :
             m_frame(x, y, w, h) {}
@@ -188,6 +190,9 @@ class Widget
         /// Les accesseurs de "styles" sont à compléter...
         void set_bg_color(int bgc) { m_bg_color = bgc; }
         int get_border_color() { return is_gui_focus() ? m_border_color_focus : is_gui_over() ? m_border_color_over : m_border_color; }
+
+
+
 
         Widget(const Widget&) = delete;
         Widget & operator=(const Widget&) = delete;
@@ -442,6 +447,9 @@ class WidgetEdge : public Widget
 
         void set_children_position(double rel_pos) { m_children_position = rel_pos; }
         void set_children_lateral(double abs_lat) { m_children_lateral = abs_lat; }
+
+        ///FAITE PAR NOUS
+        void set_color_fleche(int color) {m_color = color;}
 };
 
 
