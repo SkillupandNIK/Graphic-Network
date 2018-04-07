@@ -75,6 +75,11 @@ void Vertex::post_update()
 
     /// Reprendre la valeur du slider dans la donnée m_value locale
     m_value = m_interface->m_slider_value.get_value();
+
+//    for(unsigned int i = 0; i < m_in.size(); i++)
+//        std::cout << "aretes entrantes " << i << " = " << m_in[i] << std::endl;
+//    for(unsigned int i = 0; i < m_out.size(); i++)
+//        std::cout << "aretes sortantes " << i << " = " << m_out[i] << std::endl;
 }
 
 
@@ -426,7 +431,6 @@ std::vector<bool> Graph::uneComposanteFortementConnexe(int s)
     int x; //numero de sommets intermédiaires des composantes connexes
     bool ajoute1 = true,ajoute2 = true; ; //booléen indiquant si une nouvelle composante connexe est ajouté
 
-
     ///On alloue et initialise les tableau compo1, compo2, compo et marques
     for(int i = 0; i< m_ordre; i++ )
     {
@@ -464,31 +468,15 @@ std::vector<bool> Graph::uneComposanteFortementConnexe(int s)
                         compo1[elem.second.m_to] = true;
                         ajoute1 = true; //nouvelle composante connexe ajoutée
                     }
-                //k++;
                 }
             }
         }
     }
-//    for(int i =0 ; i< m_ordre; i++)
-//    {
-//        marques[x] = false;
-//        compo2.push_back(false);
-//    }
-//    compo2[s] = true;
-
-//    std::cout << "compo 2 : " ;
-//    for(int i = 0; i < m_ordre; i++)
-//        std::cout << compo2[i] << " ";
-//    std::cout << std::endl;
-//
-//    std::cout << "on commence la boucle pour compo 2" << std::endl;
-    //int m = 0;
 
 
     ///COMPO2
     while(ajoute2 == true)
     {
-        //std::cout << "On entre dans la boucle while" << std::endl << std::endl;
         ajoute2 = false;
 
         for(x= 0; x<m_ordre; x++)
@@ -500,59 +488,24 @@ std::vector<bool> Graph::uneComposanteFortementConnexe(int s)
                 marques2[x] = true;
                 //std::cout << "On met marques[x] à true : marques2["<< x<<"] = " << marques2[x] << std::endl;
                     for(const auto& elem : m_edges)
-                    {   //std::cout << "CONST AUTO ELEM NOUVEAU NUMERO" << std::endl;
-                        //std::cout << "m = " << m <<std::endl;
-                        //std::cout << " Sommet 1 = " << elem.second.m_from << std::endl;
-                        //std::cout << " Sommet 2 = " << elem.second.m_to << std::endl;
+                    {
                         if(elem.second.m_to == x && marques2[elem.second.m_from] == false)
                         {
-                            //std::cout << "On rentre dans le if(elem.second.m_to == x && marques[elem.second.m_from] == false) " << std::endl;
-    //                        std::cout << " Sommet 1 = " << elem.second.m_from << std::endl;
-    //                        std::cout << " Sommet 2 = " << elem.second.m_to << std::endl;
                             compo2[elem.second.m_from] = true;
                             ajoute2 = true;
                         }
-                        //std::cout << "COMPO 2 : ";
-//                        for(int l = 0; l < m_ordre; l++)
-//                        {
-//                            std::cout << compo2[x] << " " ;
-//                        }
-//                        std::cout << std::endl;
-                       // m++;
+
                     }
 
                 }
             }
         }
-
-//    std::cout << "On sort des boucles whiles" << std::endl;
-//
-//    for(int i=0; i<m_ordre; i++)
-//        std::cout<<"compo1[i]="<<compo1[i]<<" ";
-//
-//    std::cout<<std::endl;
-//    for(int i=0; i<m_ordre; i++)
-//        std::cout<<"compo2[i]="<<compo2[i]<<" ";
-//
-//
-    //std::cout<<"Voici une compo fortement connexe du graphe:"<<std::endl;
     for(int i=0; i<m_ordre; i++)
     {
         compo[i]=compo1[i] & compo2[i];
-        //std::cout<<"sommet"<<i<<"="<<compo[i]<<std::endl;
 
     }
 
-//    ///Composante fortement connexe compo = intersection de compo1 et compo2
-//    std::cout << "Compo : ";
-//    for(x= 0; x<m_ordre; x++)
-//    {
-//        compo[x] = compo1[x] & compo2[x];
-//        std::cout << compo[x] << " ";
-//    }
-//    std::cout << std::endl;
-
-    //std::cout << "On sort de 'Une composante Fortement Connexe'" << std::endl;
     ///On retourne la composante fortement connexe compo
     return compo;
 }
@@ -715,55 +668,79 @@ void Graph::AffichageGraphReduit(int compteur)
         }
         x = x / division;
         y = y / division;
-        GrapheReduit.add_interfaced_vertex(i, N, x, y, "Renard.bmp");
+        GrapheReduit.add_interfaced_vertex(i, N, x, y, "animaux.bmp");
         ii++;
     }
 
     ///AFFICHAGE DES ARCS
-    std::vector<std::vector<int> > areteReduitEntrant;
-    std::vector < std::vector < int > > mat (ii);
-    areteReduitEntrant = mat;
+    std::vector<std::vector<int> > areteReduitEntrant (tmp.size());
+//    std::vector < std::vector < int > > mat (ii);
+//    areteReduitEntrant = mat;
     bool existance = false;
+    std::vector<int> ArcsGris; //vecteur d'indice d'arcs qui ne relie pas deux sommets qui sont fortements connexes entre eux
 
-    for(int x = 0; x < tmp.size(); x++)
+
+    ///Remplissage du vecteur "ArcsGris"
+    for(int i = 0 ; i <m_edges.size(); i++)
     {
-        for(int y = 0; y< tmp[x].size() ; y++)
-        {
-            if(tmp[x][y] == true) //on entre dans une composante connexe (la xième) et on trouve un sommet connexe (le jième)
-            {
-                for(int w = 0; w < m_vertices[y].m_in.size(); w++)
-                {
-                    existance = false;
-                    std::cout << " areteReduitEntrant[x].size() = " << areteReduitEntrant[x].size() << std::endl;
-                    for(int z= 0; z<areteReduitEntrant[x].size();z++)
-                    {
-                        std::cout << " m_edges[m_vertices[y].m_in[w]].m_from  = " << m_edges[m_vertices[y].m_in[w]].m_from  << std::endl;
-                        std::cout << "areteReduitEntrant[x][z] = " << areteReduitEntrant[x][z] << std::endl;
-                        if(m_edges[m_vertices[y].m_in[w]].m_from != areteReduitEntrant[x][z])
-                        {
-                            std::cout << "JE SUIS LA " << std::endl;
-                            areteReduitEntrant[x].push_back(m_edges[m_vertices[y].m_in[w]].m_from);
-                        }
+        if(m_edges.at(i).m_interface->m_top_edge.get_color_fleche() == GRISSOMBRE)
+            ArcsGris.push_back(i);
+    }
 
+    ///Remplissage de areteReduitEntrant
+    for(int i = 0; i < tmp.size(); i++)
+    {
+        for(int j = 0; j < tmp[i].size(); j++) //On parcourt tmp
+        {
+            if(tmp[i][j]==true) //si un sommet (j) appartient à la composantes fortements connexe qu'on regarde (tmp[i])
+            {
+                for(int x  = 0; x<ArcsGris.size();x++) //On parcours les arcs gris
+                {
+                    if(m_edges.at(ArcsGris[x]).m_from == j) //Si le sommet j à une relation forte avec un autre sommet (m_edges.at(ArcsGris[x]).m_to)
+                    {
+                        if(areteReduitEntrant[i].size()==0)//Si areteReduitEntrant est vide
+                            areteReduitEntrant[i].push_back(m_edges.at(ArcsGris[x]).m_to);//on ajoute le sommet là où il va
+                        else //si areteReduitEntrant[x] n'est pas vide
+                        {
+                            existance = false;
+                            for(int y = 0; y < areteReduitEntrant[i].size(); y++)//on parcours le vecteur de areteReduit[x]
+                            {
+                                if(areteReduitEntrant[i][y] == m_edges.at(ArcsGris[x]).m_to) //on vérifie que le sommet n'est pas déjà écrit
+                                    existance =true;
+                            }
+                            if(existance == false) //si le sommet n'est pas deja écrit dans areteReduitEntrant[x]
+                                areteReduitEntrant[i].push_back(m_edges.at(ArcsGris[x]).m_to);//on ajoute le sommet là où il va
+                        }
                     }
                 }
             }
         }
     }
 
-    std::cout << "ARETE REDUIT ENTRANT : " << std::endl;
-    for(int i = 0; i<areteReduitEntrant.size(); i++)
+    ///Creation des arcs
+    int numero = 0;
+    for(int i = 0 ; i < areteReduitEntrant.size(); i++)//On parcours areteReduitEntrant
     {
-        for(int j = 0; j < areteReduitEntrant[i].size(); j++)
+        for(int j = 0 ; j < areteReduitEntrant[i].size(); j++)
         {
-            std::cout << areteReduitEntrant[i][j] << " ";
+            for(int x = 0 ; x < tmp.size(); x++) //On parcours tmp
+            {
+                for(int y = 0 ; y < tmp[x].size(); y++)
+                {
+                    if(tmp[x][y] == true && y == areteReduitEntrant[i][j])//On trouve le sommet réduit d'arrivé
+                    {
+                        GrapheReduit.add_interfaced_edge(numero, i ,x, 1);//On créer l'arc
+                        numero ++;
+                    }
+                }
+            }
         }
-        std::cout << std::endl;
     }
 
 
 
-    if(compteur < 400)
+
+    if(compteur < 200)
     {
         std::cout << "compteur = " << compteur << std::endl;
         GrapheReduit.update();

@@ -450,6 +450,8 @@ class WidgetEdge : public Widget
 
         ///FAITE PAR NOUS
         void set_color_fleche(int color) {m_color = color;}
+        int get_color_fleche() {return m_color;}
+
 };
 
 

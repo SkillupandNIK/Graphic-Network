@@ -50,7 +50,7 @@ void GestionGraphe(Graph& g)
     int compteur = 0;
     std::vector<std::vector<bool> >  CompoConnexe = g.toutesLesComposantesFortementConnexes();
     g.ColoriageCompoConnexe();
-    while(compteur < 500)
+    while(compteur < 250)
     {
         g.AffichageGraphReduit(compteur);
         compteur++;
