@@ -1,5 +1,7 @@
 #include "graph.h"
 #include <fstream>
+#include <math.h>
+#include <list>
 
 /***************************************************
                     VERTEX
@@ -195,7 +197,9 @@ void Graph::make_example(std::string nom_fichier)
     int numero, N, x, y;
     std::string nom_Image;
     Admin >> ordre;
+    std::cout << "ordre = " << ordre << std::endl;
     m_ordre = ordre;
+    std::cout << "m_ordre = " << m_ordre<< std::endl;
 
     for(int i = 0 ; i < ordre; i++)
     {
@@ -205,6 +209,7 @@ void Graph::make_example(std::string nom_fichier)
         Admin >> y;
         Admin >> nom_Image;
         add_interfaced_vertex(numero, N, x, y, nom_Image.c_str());
+        m_vertices.at(numero).m_nom_image = nom_Image;
     }
 
     int nbEdge, numeroEdge, S1, S2;
@@ -674,8 +679,6 @@ void Graph::AffichageGraphReduit(int compteur)
 
     ///AFFICHAGE DES ARCS
     std::vector<std::vector<int> > areteReduitEntrant (tmp.size());
-//    std::vector < std::vector < int > > mat (ii);
-//    areteReduitEntrant = mat;
     bool existance = false;
     std::vector<int> ArcsGris; //vecteur d'indice d'arcs qui ne relie pas deux sommets qui sont fortements connexes entre eux
 
@@ -736,17 +739,264 @@ void Graph::AffichageGraphReduit(int compteur)
             }
         }
     }
-
-
-
-
     if(compteur < 200)
     {
-        std::cout << "compteur = " << compteur << std::endl;
         GrapheReduit.update();
         grman::mettre_a_jour();
     }
-
-        //blit(GrapheReduit, screen, 0 ,0, 224 , 128, 800, 600);
-
 }
+
+//source : http://www.commentcamarche.net/forum/affich-4567474-algo-affichage-combinaison-de-p-elemt-parmi-n
+std::vector<std::vector<int> > Graph::rechercheDesKuplet(int p)
+{
+    std::vector<std::vector<int> > vec_k_uplet;
+    std::vector<int> combination;
+    int n= m_ordre;
+    int j;
+    //p = 3;
+    // Initialisation de combinaison
+    //std::cout << "coucou 1" << std::endl;
+    for (int i=0;i<n;i++)
+    {
+        combination.push_back(i);
+    }
+    //std::cout << "coucou 2" << std::endl;
+    // Remplissage de la vec_k_uplet
+    for (int i=0;i<(int) pow((double)n, (double)p);i++)
+    {
+        std::vector<int> tempon;
+        //std::cout << "pow((double)n, (double)p) = " << pow((double)n, (double)p) << std::endl;
+        //std::cout << "coucou 3" << std::endl;
+        for (j=0;j<p;j++)
+        {
+            //std::cout << "coucou 4" << std::endl;
+            //vec_k_uplet[i][j] = combination[(i/(int )pow((double )n,(double )(p-(j+1))))%n];
+            tempon.push_back(combination[(i/(int )pow((double )n,(double )(p-(j+1))))%n]);
+            //std::cout << tempon[j] << " ";
+        }
+        std::sort(tempon.begin(), tempon.end());
+        tempon.erase(std::unique(tempon.begin(), tempon.end()), tempon.end());
+
+//        std::vector<int>::iterator ot;
+//        ot = std::unique (tempon.begin(), tempon.end());   // 10 20 30 20 10 ?  ?  ?  ?
+//        tempon.resize( std::distance(tempon.begin(),ot) );
+        bool existance = false;
+        if(tempon.size() == p)
+        {
+
+            for(int x = 0; x < vec_k_uplet.size(); x++)
+            {
+                if(tempon == vec_k_uplet[x])
+                    existance = true;
+            }
+
+        }
+        if(existance == false)
+            vec_k_uplet.push_back(tempon);
+        //std::cout << std::endl;
+    }
+//    std::vector<std::vector<int> >::iterator it;
+//    it = std::unique (vec_k_uplet.begin(), vec_k_uplet.end());   // 10 20 30 20 10 ?  ?  ?  ?
+//    vec_k_uplet.resize( std::distance(vec_k_uplet.begin(),it) );
+    vec_k_uplet.erase(std::unique(vec_k_uplet.begin(), vec_k_uplet.end()), vec_k_uplet.end());
+
+//    std::cout << "COUCOU AVANT BOUCLE" << std::endl;
+    for(int i = 0; i < vec_k_uplet.size(); i++)
+    {
+        if(vec_k_uplet[i].size() < p)
+        {
+//            std::cout << "COUCOU DANS BOUCLE" << std::endl;
+//            std::cout << "vec_k_uplet[i].size() = " << vec_k_uplet[i].size() << std::endl;
+            vec_k_uplet.erase(vec_k_uplet.begin()+i);
+        }
+
+    }
+
+    std::cout << "COMBINAISON" << std::endl;
+    for(int i = 0; i < vec_k_uplet.size(); i++)
+    {
+        for(int j = 0; j< vec_k_uplet[i].size(); j++)
+        {
+            std::cout << vec_k_uplet[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return vec_k_uplet;
+}
+
+
+//source : https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
+std::vector<bool> Graph::RechercheUtileConnexe(int actuel, std::vector<bool> marquage)
+{
+    //std::cout << "Sommet actuel : " << actuel << std::endl;
+    marquage[actuel] = true;
+    std::vector<int> actuelAdjacent;
+
+//    std::cout << "taille marquage = " << marquage.size() << std::endl;
+//    std::cout << "MARQUAGE : " << std::endl;
+//    for(int i = 0 ; i<marquage.size(); i++)
+//    {
+//        //if(marquage[i] == false)
+//        //    connexite = false;
+//        std::cout << marquage[i] << " ";
+//    }
+//    std::cout << std::endl;
+
+    ///On rempli un vecteur avec tous les sommets adjacents du sommet actuel
+    //on rajoute les predecesseurs
+
+    for(int i =0; i < m_vertices.at(actuel).m_in.size(); i++)
+    {
+        //std::cout << "m_edges[m_vertices.at(actuel).m_in[i]].m_from = " << m_edges[m_vertices.at(actuel).m_in[i]].m_from << std::endl;
+        actuelAdjacent.push_back(m_edges[m_vertices.at(actuel).m_in[i]].m_from);
+    }
+    //on rajoute les successeurs
+    for(int i =0; i < m_vertices.at(actuel).m_out.size(); i++)
+    {
+        actuelAdjacent.push_back(m_edges[m_vertices.at(actuel).m_out[i]].m_to);
+    }
+//    std::cout << "Actuel Adjacent : " << std::endl;
+//    for(int i = 0 ; i < actuelAdjacent.size(); i++)
+//        std::cout << actuelAdjacent[i] << " ";
+//    std::cout << std::endl;
+
+    ///On parcours les sommets en les marquants
+    for(int i = 0; i < actuelAdjacent.size() ; i++)
+    {
+        if(marquage[actuelAdjacent[i]] == false)
+            {
+                //std::cout << "Sommet suivant : " << actuelAdjacent[i] << std::endl;
+                marquage = RechercheUtileConnexe(actuelAdjacent[i], marquage);
+            }
+    }
+
+
+
+    return marquage;
+}
+
+bool Graph::RechercheConnexe(int ordreGraphePrecedent)
+{
+    bool connexite = true;
+    std::vector<bool> marquage;
+    for(int i = 0; i <ordreGraphePrecedent; i++)
+    {
+        marquage.push_back(false);
+        if(m_vertices.at(i).suppressionConnexe == true)
+            marquage[i] = true;
+    }
+
+
+    std::cout << "MARQUAGE : " << std::endl;
+    for(int i = 0 ; i<marquage.size(); i++)
+    {
+        std::cout << marquage[i] << " ";
+    }
+    std::cout << std::endl;
+
+    bool trouve = false;
+    int premierSommet = 0;
+    for(int i=0 ; i < ordreGraphePrecedent; i++)
+    {
+        if(trouve == false && m_vertices[i].suppressionConnexe == false)
+        {
+            premierSommet= i;
+        }
+    }
+    marquage = RechercheUtileConnexe(premierSommet, marquage);
+
+    for(int i = 0 ; i<marquage.size(); i++)
+    {
+        if(marquage[i] == false)
+            connexite = false;
+    }
+
+    return connexite;
+}
+
+void Graph::k_connexite()
+{
+    std::vector< std::vector< int> > combinaison;
+    bool affichage = false;
+
+    while(affichage == false) //tant qu'on a pas afficher des graphes
+    {
+        for(int i = 1; i < m_ordre; i++) //On fait une boucle for
+        {
+            combinaison = rechercheDesKuplet(i); // on  regarde les combinaison possible de i(variant de 1 à m_ordre) dans n( vaut m_ordre-1)
+            for(int x = 0; x< combinaison.size(); x++)
+            {
+                std::cout << "NOUVEAU GRAPHE " << std::endl;
+                std::cout << "Sommet du graphe : ";
+                int ordre = 0;
+                Graph GraphNonConnexe;//on créer un nouveau graphe
+                GraphNonConnexe.m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600);
+
+                for(int sommet = 0; sommet < m_ordre; sommet++)// On parcours les sommets pour les créer
+                {
+                    bool aEffacer = false;
+                    for(int sommetAeffacer=0; sommetAeffacer < combinaison[x].size(); sommetAeffacer++) //On regarde les sommets à effacer
+                    {
+                        if(sommet == combinaison[x][sommetAeffacer]) //si le sommet est à effacer
+                            aEffacer = true;
+                    }
+
+                    if(aEffacer == false) //si le sommet n'est pas a supprimer, on le rajoute
+                    {
+                        GraphNonConnexe.add_interfaced_vertex(sommet, m_vertices.at(sommet).m_N, m_vertices.at(sommet).m_x, m_vertices.at(sommet).m_y, m_vertices.at(sommet).m_nom_image.c_str());
+                        std::cout << sommet << " ";
+                        ordre++;
+                    }
+                    else
+                        GraphNonConnexe.m_vertices[sommet].suppressionConnexe = true;
+                }
+                GraphNonConnexe.m_ordre = ordre;
+
+                for(int arc = 0; arc < m_edges.size(); arc++) //on parcours les arcs pour les créer
+                {
+                    bool aEnleverfrom = false;
+                    bool aEnleverto = false;
+                    for(int arcAeffacer=0; arcAeffacer < combinaison[x].size(); arcAeffacer++) //On regarde les sommets à effacer
+                    {
+                        if(combinaison[x][arcAeffacer] == m_edges.at(arc).m_from) //si le sommet d'où vient l'arc est à supprimer
+                            aEnleverfrom = true; //on met le booleen à true
+                        if(combinaison[x][arcAeffacer] == m_edges.at(arc).m_to) //si le sommet où va l'arc est à supprimer
+                            aEnleverto = true; //on met le booleen à true
+                    }
+                    if(aEnleverfrom == false && aEnleverto == false) //si les sommets d'où viennent et partent l'arcs ne sont pas à supprimer
+                    {
+                        //on créer l'arrete
+                        GraphNonConnexe.add_interfaced_edge(arc, m_edges.at(arc).m_from, m_edges.at(arc).m_to, m_edges.at(arc).m_weight);
+                    }
+                }
+
+                //On regarde s'il est connexe
+                if(GraphNonConnexe.RechercheConnexe(m_ordre) == false) //s'il n'est pas connexe
+                {
+                    //std::cout << " GraphNonConnexe.RechercheConnexe() = " << GraphNonConnexe.RechercheConnexe() << std::endl;
+                    //on l'affiche et on met le booléen affichage à true.
+                    for(int compteur = 0 ; compteur < 100; compteur++)
+                    {
+                        GraphNonConnexe.update();
+                        grman::mettre_a_jour();
+                    }
+                    affichage = true;
+                    std::cout << "Le graphe est " <<i << "-connexe." << std::endl;
+                }
+            }
+            if(affichage == true)
+                return;
+        }
+
+
+    }
+}
+
+
+
+
+
+
+
+

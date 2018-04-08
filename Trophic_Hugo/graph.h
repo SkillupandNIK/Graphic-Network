@@ -158,11 +158,13 @@ class Vertex
         int m_N;
         int m_x;
         int m_y;
+        std::string m_nom_image;
+        bool suppressionConnexe;
 
         /// Les constructeurs sont à compléter selon vos besoin...
         /// Ici on ne donne qu'un seul constructeur qui peut utiliser une interface
         Vertex (double value=0, VertexInterface *interface=nullptr) :
-            m_value(value), m_interface(interface)  {  }
+            m_value(value), m_interface(interface), suppressionConnexe(false)  {  }
 
         /// Vertex étant géré par Graph ce sera la méthode update de graph qui appellera
         /// le pre_update et post_update de Vertex (pas directement la boucle de jeu)
@@ -336,6 +338,13 @@ class Graph
         std::vector<std::vector<bool> > toutesLesComposantesFortementConnexes();
         void ColoriageCompoConnexe();
         void AffichageGraphReduit(int compteur);
+
+        ///Etude de la k-sommet-connexité
+        std::vector<std::vector<int> > rechercheDesKuplet(int p);
+        std::vector<bool> RechercheUtileConnexe(int actuel, std::vector<bool> marquage);
+        bool RechercheConnexe(int ordreGraphePrecedent);
+        void k_connexite();
+
 
         void supprimer_graphe();
 };

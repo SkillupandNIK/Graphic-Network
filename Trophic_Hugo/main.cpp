@@ -48,19 +48,23 @@ void GestionGraphe(Graph& g)
 {
     g.make_example("Ferme.txt");
     int compteur = 0;
-    std::vector<std::vector<bool> >  CompoConnexe = g.toutesLesComposantesFortementConnexes();
-    g.ColoriageCompoConnexe();
-    while(compteur < 250)
-    {
-        g.AffichageGraphReduit(compteur);
-        compteur++;
-    }
+
+    //g.ColoriageCompoConnexe();
+
+
+//    while(compteur < 250)
+//    {
+//        g.AffichageGraphReduit(compteur);
+//        compteur++;
+//    }
 
     while ( !key[KEY_ESC] )
     {
 
         if (key[KEY_SPACE])
             g.test_remove_vertex(1);
+        if (key[KEY_I])
+            g.k_connexite();
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
         g.update();
         /// Mise à jour générale (clavier/souris/buffer etc...)
