@@ -1,0 +1,241 @@
+# depslib dependency file v1.0
+1522858538 source:c:\users\hugoa\desktop\4.0 - copie\grman\coords.cpp
+	"coords.h"
+
+1522858538 c:\users\hugoa\desktop\4.0 - copie\grman\coords.h
+	<cmath>
+
+1522858538 source:c:\users\hugoa\desktop\4.0 - copie\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522858538 c:\users\hugoa\desktop\4.0 - copie\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522858538 c:\users\hugoa\desktop\4.0 - copie\grman\grman_couleurs.h
+
+1522862216 c:\users\hugoa\desktop\4.0 - copie\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522862174 source:c:\users\hugoa\desktop\4.0 - copie\grman\widget.cpp
+	"widget.h"
+
+1523036339 source:c:\users\hugoa\desktop\4.0 - copie\graph.cpp
+	"graph.h"
+	<iostream>
+	<fstream>
+
+1523034959 c:\users\hugoa\desktop\4.0 - copie\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522979804 source:c:\users\hugoa\desktop\4.0 - copie\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"main.h"
+
+1522858538 c:\users\hugoa\desktop\4.0 - copie\main.h
+	"graph.h"
+
+1522858538 source:c:\users\hugoa\desktop\5.0 fonctionnel\grman\coords.cpp
+	"coords.h"
+
+1523195726 c:\users\hugoa\desktop\5.0 fonctionnel\grman\coords.h
+	<cmath>
+
+1522858538 source:c:\users\hugoa\desktop\5.0 fonctionnel\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522858538 c:\users\hugoa\desktop\5.0 fonctionnel\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522858538 c:\users\hugoa\desktop\5.0 fonctionnel\grman\grman_couleurs.h
+
+1522862216 c:\users\hugoa\desktop\5.0 fonctionnel\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522862174 source:c:\users\hugoa\desktop\5.0 fonctionnel\grman\widget.cpp
+	"widget.h"
+
+1523190701 source:c:\users\hugoa\desktop\5.0 fonctionnel\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"main.h"
+
+1522858538 c:\users\hugoa\desktop\5.0 fonctionnel\main.h
+	"graph.h"
+
+1523119225 c:\users\hugoa\desktop\5.0 fonctionnel\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523190615 source:c:\users\hugoa\desktop\5.0 fonctionnel\graph.cpp
+	"graph.h"
+	<iostream>
+	<fstream>
+
+1522858538 source:c:\users\hugoa\desktop\5.5 fonctionnel\grman\coords.cpp
+	"coords.h"
+
+1523195726 c:\users\hugoa\desktop\5.5 fonctionnel\grman\coords.h
+	<cmath>
+
+1522858538 source:c:\users\hugoa\desktop\5.5 fonctionnel\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522858538 c:\users\hugoa\desktop\5.5 fonctionnel\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522858538 c:\users\hugoa\desktop\5.5 fonctionnel\grman\grman_couleurs.h
+
+1522862216 c:\users\hugoa\desktop\5.5 fonctionnel\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522862174 source:c:\users\hugoa\desktop\5.5 fonctionnel\grman\widget.cpp
+	"widget.h"
+
+1523190701 source:c:\users\hugoa\desktop\5.5 fonctionnel\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"main.h"
+
+1522858538 c:\users\hugoa\desktop\5.5 fonctionnel\main.h
+	"graph.h"
+
+1523119225 c:\users\hugoa\desktop\5.5 fonctionnel\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523204542 source:c:\users\hugoa\desktop\5.5 fonctionnel\graph.cpp
+	"graph.h"
+	<iostream>
+	<fstream>
+
+1522858538 source:c:\users\hugoa\desktop\final trophic\grman\coords.cpp
+	"coords.h"
+
+1523195726 c:\users\hugoa\desktop\final trophic\grman\coords.h
+	<cmath>
+
+1522858538 source:c:\users\hugoa\desktop\final trophic\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522858538 c:\users\hugoa\desktop\final trophic\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522858538 c:\users\hugoa\desktop\final trophic\grman\grman_couleurs.h
+
+1523214029 c:\users\hugoa\desktop\final trophic\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522862174 source:c:\users\hugoa\desktop\final trophic\grman\widget.cpp
+	"widget.h"
+
+1523213896 source:c:\users\hugoa\desktop\final trophic\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"main.h"
+
+1523213609 c:\users\hugoa\desktop\final trophic\main.h
+	"graph.h"
+
+1523213815 c:\users\hugoa\desktop\final trophic\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523213846 source:c:\users\hugoa\desktop\final trophic\graph.cpp
+	"graph.h"
+	<iostream>
+	<fstream>
+

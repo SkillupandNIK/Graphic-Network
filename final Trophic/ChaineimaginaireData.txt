@@ -1,0 +1,14 @@
+6
+0 0 330 10 dragon.bmp
+1 100 559 197 vampire.bmp
+2 55 596 387 loupgarou.bmp
+3 55 80 204 ogre.bmp
+4 55 332 411 licorne.bmp
+5 55 308 600 arc-en-ciel.bmp
+6
+0 1 0 10
+1 2 1 10
+2 2 4 10
+3 3 0 10
+4 4 3 10
+5 5 4 100

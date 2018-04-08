@@ -1,0 +1,27 @@
+11
+0 0 58 1 baleine.bmp
+1 55 639 1 orque.bmp
+2 55 677 146 leopardmer.bmp
+3 55 287 119 phoque.bmp
+4 55 64 331 krill.bmp
+5 55 348 266 manchot.bmp
+6 55 483 405 poisson.bmp
+7 55 688 321 calmar.bmp
+8 55 280 519 phyto.bmp
+9 55 22 615 zoocarnivore.bmp
+10 55 744 615 zooherbivore.bmp
+14
+0 4 0 10
+1 2 1 10
+2 3 2 10
+3 4 3 10
+4 4 5 0
+5 5 2 0
+6 4 6 100
+7 6 2 0
+8 6 7 0
+9 9 4 0
+10 8 4 0
+11 8 10 0
+12 10 7 0
+13 10 9 0

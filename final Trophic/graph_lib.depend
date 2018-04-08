@@ -1,0 +1,181 @@
+# depslib dependency file v1.0
+1522861411 source:c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<iostream>
+	<fstream>
+
+1522861494 c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522539041 c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1509222372 c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1522575424 c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1522636616 c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522575069 source:c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1522515823 source:c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522636919 source:c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1522861411 source:c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"main.h"
+
+1522851595 c:\users\helen\documents\ing2\s2\info\projet info s2\graph_lib_v1\graph_lib_exemple_graph\main.h
+	"graph.h"
+
+1522862294 source:c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<iostream>
+	<fstream>
+
+1522862289 c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522858536 c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522858536 c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1522858536 c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1522862215 c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522858536 source:c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1522858536 source:c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522862172 source:c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1522862487 source:c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"main.h"
+
+1522858536 c:\users\thoma\documents\github\graphic-network\graph_lib_exemple_graph\main.h
+	"graph.h"
+
+1522858536 source:c:\users\thoma\desktop\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1522858536 c:\users\thoma\desktop\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1522858536 source:c:\users\thoma\desktop\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522858536 c:\users\thoma\desktop\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522858536 c:\users\thoma\desktop\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1522862215 c:\users\thoma\desktop\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522862172 source:c:\users\thoma\desktop\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1522978888 source:c:\users\thoma\desktop\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<iostream>
+	<fstream>
+
+1522980058 c:\users\thoma\desktop\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522979803 source:c:\users\thoma\desktop\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"main.h"
+
+1522858536 c:\users\thoma\desktop\graph_lib_exemple_graph\main.h
+	"graph.h"
+
